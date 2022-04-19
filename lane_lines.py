@@ -309,7 +309,7 @@ uploaded_input_image = st.file_uploader("Choose an input image", key = "input_im
 uploaded_output_image = st.file_uploader("Choose an output image", type = 'jpg')
 
 if uploaded_output_image is not None:
-	annotate_image(uploaded_output_image, uploaded_output_image)
+	annotate_image(uploaded_input_image, uploaded_output_image)
 	st.image(uploaded_output_image)
 	result = Image.fromarray(uploaded_output_image, 'RGB')
 	img = Image.open(result)
