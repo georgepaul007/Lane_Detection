@@ -301,6 +301,10 @@ uploaded_output_video = st.file_uploader("Choose an output Video", type = 'mp4')
 if uploaded_output_video is not None:
 	annotate_video(uploaded_input_video,uploaded_output_video)
 	st.download_button('Download Output Video', uploaded_output_video)
+	video_file = open('uploaded_output_video.mp4', 'rb')
+	video_bytes = video_file.read()
+	st.video(video_bytes)
+
 
 
 st.header('If you need to detect lanes in an image')
@@ -310,16 +314,25 @@ uploaded_output_image = st.file_uploader("Choose an output image", type = 'jpg')
 
 if uploaded_output_image is not None:
 	annotate_image(uploaded_input_image, uploaded_output_image)
+	# st.image(uploaded_output_image)
+	# result = Image.fromarray(uploaded_output_image, 'RGB')
+	# img = Image.open(result)
+	# btn = st.download_button(
+	# 	labl = "Download Output Image",
+	# 	data = img,
+	# 	file_name = "uploaded_output_image.jpg",
+	# 	mime = "image/png"
+	# )
+
+	# with open("flower.png", "rb") as file:
+    # 	btn = st.download_button(
+    # 		label="Download image",
+    # 		data=file,
+    # 		file_name="flower.png",
+	# 		mime="image/png"
+    # 	)
 	st.image(uploaded_output_image)
-	result = Image.fromarray(uploaded_output_image, 'RGB')
-	img = Image.open(result)
-	btn = st.download_button(
-		labl = "Download Output Image",
-		data = img,
-		file_name = "uploaded_output_image.jpg",
-		mime = "image/png"
-	)
-	# with open("uploaded_output_image.jpg", "rb") as file:
+	# with open("uploaded_output_image", "rb") as file:
 	# 	btn = st.download_button(
 	# 		label = "Download Output Image",
 	# 		data = file,
@@ -327,14 +340,3 @@ if uploaded_output_image is not None:
 	# 		mime = "image/png"
 	# 	)
 
-# st.image(cropped_image)
-# #cropped_image converted to PIL image color      
-# result = Image.fromarray(cropped_image.astype('uint8'), 'RGB')
-    
-# img = Image.open(result)            
-
-# btn = st.download_button(
-#       label="Download image",
-#       data=img,
-#       file_name="imagename.png",
-#       mime="image/png")
